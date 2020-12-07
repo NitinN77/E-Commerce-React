@@ -17,7 +17,7 @@ const steps = ["Shipping Address", "Payment Details"];
 
 function Checkout() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const Form = () => activeStep === 0 ?
   <AddressForm />
   :
