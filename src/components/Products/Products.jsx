@@ -2,9 +2,10 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 import Product from './Product/Product';
 import useStyles from './styles';
+import { useStateValue } from "../../StateProvider";
 
-
-export default function Products({products, onAddToCart}) {
+export default function Products({onAddToCart}) {
+    const [{ products }, dispatch] = useStateValue();
     const classes = useStyles();
     return (
         <main className={classes.content}>

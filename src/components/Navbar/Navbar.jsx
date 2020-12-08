@@ -9,16 +9,16 @@ import {
   Typography,
 } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
-
+import { useStateValue } from "../../StateProvider";
 import logo from "../../assets/navlogo.svg";
 import { Link, useLocation } from "react-router-dom";
 
 import useStyles from "./styles";
 
-function Navbar({ totalItems }) {
+function Navbar() {
   const classes = useStyles();
   const location = useLocation();
-
+  const [{ cart }, dispatch] = useStateValue();
   return (
     <div>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
@@ -42,7 +42,7 @@ function Navbar({ totalItems }) {
                 aria-label="show cart items"
                 color="inherit"
               >
-                <Badge badgeContent={totalItems} color="secondary">
+                <Badge badgeContent={cart ? cart.total_items : 0} color="secondary">
                   <ShoppingCart />
                 </Badge>
               </IconButton>

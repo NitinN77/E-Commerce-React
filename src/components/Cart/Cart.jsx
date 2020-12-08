@@ -3,15 +3,15 @@ import { Container, Typography, Button, Grid } from "@material-ui/core";
 import useStyles from "./styles";
 import CartItem from "./CartItem/CartItem";
 import { Link } from "react-router-dom";
+import { useStateValue } from "../../StateProvider";
 
 function Cart({
-  cart,
   handleUpdateCartQuantity,
   handleRemoveFromCart,
   handleEmptyCart,
 }) {
+  const [{ cart }, dispatch ] = useStateValue();
   const classes = useStyles();
-  const isEmpty = cart.line_items ? false : true;
 
   const EmptyCart = () => (
     <Typography variant="subtitle1">
@@ -63,13 +63,17 @@ function Cart({
     </>
   );
 
+  if (!cart) {
+    return(<div></div>)
+  }
+
   return (
     <Container>
       <div className={classes.toolbar} />
       <Typography className={classes.title} variant="h3" gutterBottom>
         Your Cart
       </Typography>
-      {isEmpty ? <EmptyCart /> : <FilledCart />}
+      {!cart.line_items ? <EmptyCart /> : <FilledCart />}
     </Container>
   );
 }
