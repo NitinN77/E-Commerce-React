@@ -17,7 +17,7 @@ import { useStateValue } from "../../../StateProvider";
  
 const steps = ["Shipping Address", "Payment Details"];
 
-function Checkout() {
+function Checkout({ order, onCaptureCheckout, error }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const [{ cart, checkoutToken }, dispatch] = useStateValue();
@@ -49,7 +49,8 @@ function Checkout() {
   const Form = () => activeStep === 0 ?
   <AddressForm next={next}/>
   :
-  <PaymentForm shippingData={shippingData}/>
+  <PaymentForm shippingData={shippingData} backStep={backStep} onCaptureCheckout={onCaptureCheckout}
+  nextStep={nextStep}/>
 
   const Confirmation = () => (
       <div>
