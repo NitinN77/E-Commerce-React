@@ -1,5 +1,3 @@
-import { commerce } from "./lib/commerce";
-
 export const initialState = {
     products: [],
     cart: [],

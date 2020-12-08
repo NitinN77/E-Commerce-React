@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { commerce } from "./lib/commerce";
 import { useStateValue } from "./StateProvider";
 import { Products, Navbar, Cart, Checkout } from "./components";
