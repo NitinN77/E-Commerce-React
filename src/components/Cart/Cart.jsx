@@ -4,14 +4,16 @@ import useStyles from "./styles";
 import CartItem from "./CartItem/CartItem";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
+import { commerce } from "../../lib/commerce";
 
-function Cart({
-  handleUpdateCartQuantity,
-  handleRemoveFromCart,
-  handleEmptyCart,
-}) {
+function Cart() {
   const [{ cart }, dispatch ] = useStateValue();
   const classes = useStyles();
+
+  const handleEmptyCart = async () => {
+    const { cart } = await commerce.cart.empty();
+    dispatch({type: 'SET_CART', data: cart});
+  };
 
   const EmptyCart = () => (
     <Typography variant="subtitle1">
@@ -27,8 +29,7 @@ function Cart({
       <Grid container spacing={3}>
         {cart.line_items.map((item) => (
           <Grid item xs={12} sm={4} key={item.id}>
-            <CartItem item={item} onUpdateCartQuantity={handleUpdateCartQuantity}
-            onRemoveFromCart={handleRemoveFromCart}/>
+            <CartItem item={item} />
           </Grid>
         ))}
       </Grid>

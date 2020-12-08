@@ -1,10 +1,11 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import Product from './Product/Product';
+
 import useStyles from './styles';
 import { useStateValue } from "../../StateProvider";
 
-export default function Products({onAddToCart}) {
+export default function Products() {
     const [{ products }, dispatch] = useStateValue();
     const classes = useStyles();
     return (
@@ -13,7 +14,7 @@ export default function Products({onAddToCart}) {
             <Grid container justify="center" spacing={4}>
                 {products.map((product) => (
                     <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-                        <Product product={product} onAddToCart={onAddToCart}/>
+                        <Product product={product} />
                     </Grid>
                 ))}
             </Grid>

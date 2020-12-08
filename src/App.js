@@ -18,25 +18,6 @@ function App() {
     dispatch({type: 'SET_CART', data: cart});
   };
 
-  const handleAddToCart = async (productId, quantity) => {
-    const { cart } = await commerce.cart.add(productId, quantity);
-    dispatch({type: 'SET_CART', data: cart});
-  };
-
-  const handleUpdateCartQuantity = async (productId, quantity) => {
-    const { cart } = await commerce.cart.update(productId, { quantity });
-    dispatch({type: 'SET_CART', data: cart});
-  };
-
-  const handleRemoveFromCart = async (productId) => {
-    const { cart } = await commerce.cart.remove(productId);
-    dispatch({type: 'SET_CART', data: cart});
-  };
-
-  const handleEmptyCart = async () => {
-    const { cart } = await commerce.cart.empty();
-    dispatch({type: 'SET_CART', data: cart});
-  };
 
   useEffect(() => {
     fetchProducts();
@@ -49,14 +30,10 @@ function App() {
         <Navbar/>
         <Switch>
           <Route exact path="/">
-            <Products onAddToCart={handleAddToCart} />
+            <Products />
           </Route>
           <Route exact path="/cart">
-            <Cart
-              handleUpdateCartQuantity = {handleUpdateCartQuantity}
-              handleRemoveFromCart = {handleRemoveFromCart}
-              handleEmptyCart = {handleEmptyCart}
-            />
+            <Cart />
           </Route>
           <Route exact path="/checkout">
             <Checkout />
