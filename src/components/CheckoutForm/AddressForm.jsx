@@ -35,7 +35,7 @@ function AddressForm() {
                         <FormInput required name="email" label="Email" />
                         <FormInput required name="city" label="City" />
                         <FormInput required name="zip" label="Zip / Postal code" />
-                        <Grid item xs={12} sm={6}>
+                        {/* <Grid item xs={12} sm={6}>
                             <InputLabel>Shipping Country</InputLabel>
                             <Select value={ } fullWidth onChange={ }>
                                 <MenuItem key={ } value={ }>Select Me</MenuItem>
@@ -52,7 +52,7 @@ function AddressForm() {
                             <Select value={ } fullWidth onChange={ }>
                                 <MenuItem key={ } value={ }>Select Me</MenuItem>
                             </Select>
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                 </form>
             </FormProvider>
