@@ -10,10 +10,12 @@ import {
 import { useForm, FormProvider } from "react-hook-form";
 import FormInput from "./FormInput";
 import { Link } from 'react-router-dom';
-
+import { useStateValue } from '../../StateProvider';
 import { commerce } from '../../lib/commerce';
 
-function AddressForm({ checkoutToken, next}) {
+function AddressForm({ next }) {
+
+    const [{ checkoutToken }, dispatch] = useStateValue();
 
     const [shippingCountries, setShippingCountries] = useState([]);
     const [shippingCountry, setShippingCountry] = useState('');
