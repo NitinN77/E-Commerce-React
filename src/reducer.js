@@ -2,6 +2,7 @@ export const initialState = {
     products: [],
     cart: [],
     checkoutToken: null,
+    user: null,
 };
 
 const reducer = (state, action) => {
@@ -20,6 +21,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 checkoutToken: action.data,
+            }
+        case 'SET_USER':
+            return {
+                ...state,
+                user: action.data,
             }
     }
 };

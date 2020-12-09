@@ -5,6 +5,7 @@ import { Products, Navbar, Cart, Checkout, Login } from "./components";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignUp from './components/SignUp/SignUp';
+import { auth } from './firebase';
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -40,6 +41,15 @@ function App() {
   useEffect(() => {
     fetchProducts();
     fetchCart();
+    auth.onAuthStateChanged(authUser => {
+      console.log('USER IS', authUser);
+      if (authUser) {
+        dispatch({ type: 'SET_USER', data: authUser});
+      }
+      else {
+        dispatch({ type: 'SET_USER', data: null});
+      }
+    })
   }, []);
 
   return (

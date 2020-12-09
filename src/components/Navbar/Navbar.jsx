@@ -7,18 +7,25 @@ import {
   MenuItem,
   Menu,
   Typography,
+  Button,
 } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
 import { useStateValue } from "../../StateProvider";
 import logo from "../../assets/navlogo.svg";
 import { Link, useLocation } from "react-router-dom";
+import { auth } from '../../firebase';
 
 import useStyles from "./styles";
 
 function Navbar() {
   const classes = useStyles();
   const location = useLocation();
-  const [{ cart }, dispatch] = useStateValue();
+  const [{ cart, user }] = useStateValue();
+
+  const handleSignOut = () => {
+    auth.signOut();
+  }
+
   return (
     <div>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
@@ -46,8 +53,23 @@ function Navbar() {
                   <ShoppingCart />
                 </Badge>
               </IconButton>
+              
             </div>
           )}
+          { user ? (<Typography variant="h6" style={{padding: '23px'}}>{user.email}</Typography>) : null}
+          {" "}
+          { user ? 
+          (<Button color="secondary" variant="contained" onClick={handleSignOut}>
+            Sign Out
+          </Button>)
+           : 
+          (
+            <Button color="secondary" variant="contained" href="/login">
+              Sign In 
+            </Button>
+            )
+          }
+          
         </Toolbar>
       </AppBar>
     </div>
