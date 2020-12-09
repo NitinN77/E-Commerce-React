@@ -1,5 +1,5 @@
 # E-Commerce React App
-utilizes Commerce.js and Stripe with the Context API
+Commerce.js and Stripe with the Context API. Uses Firebase for Authentication
 
 ![](https://i.imgur.com/Brnx1K1.png)
 
