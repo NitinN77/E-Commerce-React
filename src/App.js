@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { commerce } from "./lib/commerce";
 import { useStateValue } from "./StateProvider";
-import { Products, Navbar, Cart, Checkout } from "./components";
+import { Products, Navbar, Cart, Checkout, Login } from "./components";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import SignUp from './components/SignUp/SignUp';
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -55,6 +56,12 @@ function App() {
           <Route exact path="/checkout">
             <Checkout order={order} onCaptureCheckout={handleCaptureCheckout}
             error={errorMessage}/>
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/signup">
+            <SignUp />
           </Route>
         </Switch>
       </div>
