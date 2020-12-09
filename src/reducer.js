@@ -27,6 +27,10 @@ const reducer = (state, action) => {
                 ...state,
                 user: action.data,
             }
+        default:
+            return {
+                ...state
+            }
     }
 };
 

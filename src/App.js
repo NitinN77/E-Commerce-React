@@ -8,7 +8,7 @@ import SignUp from './components/SignUp/SignUp';
 import { auth } from './firebase';
 
 function App() {
-  const [{}, dispatch] = useStateValue();
+  const [,dispatch] = useStateValue();
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
   
@@ -50,7 +50,7 @@ function App() {
         dispatch({ type: 'SET_USER', data: null});
       }
     })
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Router>

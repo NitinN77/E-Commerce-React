@@ -6,7 +6,7 @@ import useStyles from './styles';
 import { useStateValue } from "../../StateProvider";
 
 export default function Products() {
-    const [{ products }, dispatch] = useStateValue();
+    const [{ products }] = useStateValue();
     const classes = useStyles();
     return (
         <main className={classes.content}>

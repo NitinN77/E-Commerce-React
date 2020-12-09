@@ -7,9 +7,6 @@ import {
   Step,
   StepLabel,
   Typography,
-  CircularProgress,
-  Divider,
-  Button,
 } from "@material-ui/core";
 import useStyles from "./styles";
 import { commerce } from '../../../lib/commerce';
@@ -36,7 +33,7 @@ function Checkout({ order, onCaptureCheckout, error }) {
     if(cart){
       generateToken();
     }
-  }, [cart]);
+  }, [cart]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
   const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);

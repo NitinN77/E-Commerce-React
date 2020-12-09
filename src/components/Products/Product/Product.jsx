@@ -7,7 +7,7 @@ import { useStateValue } from "../../../StateProvider";
 
 function Product({ product }) {
     const classes = useStyles();
-    const [{}, dispatch] = useStateValue();
+    const [,dispatch] = useStateValue();
     const handleAddToCart = async (productId, quantity) => {
         const { cart } = await commerce.cart.add(productId, quantity);
         dispatch({type: 'SET_CART', data: cart});

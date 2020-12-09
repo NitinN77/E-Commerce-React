@@ -12,7 +12,7 @@ import { useStateValue } from "../../../StateProvider";
 import { commerce } from "../../../lib/commerce";
 
 function CartItem({ item }) {
-  const [{}, dispatch] = useStateValue();
+  const [,dispatch] = useStateValue();
   const classes = useStyles();
   const handleUpdateCartQuantity = async (productId, quantity) => {
     const { cart } = await commerce.cart.update(productId, { quantity });

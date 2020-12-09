@@ -15,7 +15,7 @@ import { commerce } from '../../lib/commerce';
 
 function AddressForm({ next }) {
 
-    const [{ checkoutToken }, dispatch] = useStateValue();
+    const [{ checkoutToken }] = useStateValue();
 
     const [shippingCountries, setShippingCountries] = useState([]);
     const [shippingCountry, setShippingCountry] = useState('');
@@ -46,15 +46,15 @@ function AddressForm({ next }) {
 
     useEffect(() => {
         fetchShippingCountries(checkoutToken.id);
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
     
     useEffect(() => {
         if(shippingCountry) fetchSubdivisions(shippingCountry);
-    }, [shippingCountry]);
+    }, [shippingCountry]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, shippingCountry, shippingSubdivision);
-    }, [shippingSubdivision]);
+    }, [shippingSubdivision]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const countries = Object.entries(shippingCountries).map(([code, name]) => ({id: code, label: name}));
     const subdivisions = Object.entries(shippingSubdivisions).map(([code, name]) => ({id: code, label: name}));
